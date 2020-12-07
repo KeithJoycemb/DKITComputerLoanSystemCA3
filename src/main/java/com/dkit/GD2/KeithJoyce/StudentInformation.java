@@ -6,7 +6,6 @@ public class StudentInformation
     private String studentEmail;
     private String studentID;
     private String studentPhoneNumber;
-    private String studentComputerLoaned;
-
+    private String studentComputersOnLoan;
 
 }
