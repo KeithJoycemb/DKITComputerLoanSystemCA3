@@ -8,4 +8,15 @@ public class StudentInformation
     private String studentPhoneNumber;
     private String studentComputersOnLoan;
 
+
+    public StudentInformation(String studentName, String studentEmail, String studentID, String studentPhoneNumber, String studentComputersOnLoan)
+    {
+        this.studentName = studentName;
+        this.studentEmail = studentEmail;
+        this.studentID = studentID;
+        this.studentPhoneNumber = studentPhoneNumber;
+        this.studentComputersOnLoan = studentComputersOnLoan;
+    }
+
+
 }

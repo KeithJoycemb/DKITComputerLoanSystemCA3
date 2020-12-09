@@ -1,5 +1,7 @@
 package com.dkit.GD2.KeithJoyce;
 
+import java.time.LocalDateTime;
+
 public class Booking
 {
     private int bookingID;
@@ -8,6 +10,7 @@ public class Booking
     private String computerType;
     private String computerAssetTag;
     private String bookingStudentID;
+    private LocalDateTime atTime;
 
 
     public Booking(int bookingID, String bookingDateAndTime, String returnDateAndTime, String computerType, String computerAssetTag, String bookingStudentID)
@@ -49,6 +52,8 @@ public class Booking
     {
         return bookingStudentID;
     }
+
+
 
     @Override
     public String toString() {
