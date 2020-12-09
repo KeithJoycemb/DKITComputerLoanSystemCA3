@@ -108,7 +108,7 @@ public class App
                         loop = false;
                         break;
                     case ADD_STUDENT:
-                        System.out.println("CODE NEEDED");
+                        StudentInformationDB.addStudent();
                         break;
                     case EDIT_STUDENT:
                         System.out.println("CODE NEEDED");

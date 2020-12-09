@@ -56,8 +56,23 @@ public class StudentInformationDB
         }
     }
 
+    private static String enterInformation(String Information)
+    {
+        String input;
+        System.out.print("Please enter the students " + Information + " : ");
+        input = keyboard.nextLine();
+        return input;
+    }
 
+    public static void addStudent()
+    {
+        String studentName = enterInformation("Name");
+        String studentEmail = enterInformation("Email");
+        String studentID = enterInformation("ID");
+        String studentPhoneNumber = enterInformation("Phone Number");
+        String studentComputersOnLoan = enterInformation("Computer On Loan");
 
+    }
 
 
 }
