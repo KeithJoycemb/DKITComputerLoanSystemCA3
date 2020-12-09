@@ -18,5 +18,45 @@ public class StudentInformation
         this.studentComputersOnLoan = studentComputersOnLoan;
     }
 
+    public String getStudentName()
+    {
+        return studentName;
+    }
 
+    public String getStudentEmail()
+    {
+        return studentEmail;
+    }
+
+    public String getStudentID()
+    {
+        return studentID;
+    }
+
+    public String getStudentPhoneNumber()
+    {
+        return studentPhoneNumber;
+    }
+
+    public String getStudentComputersOnLoan()
+    {
+        return studentComputersOnLoan;
+    }
+
+    public void setStudentComputersOnLoan(String studentComputersOnLoan)
+    {
+        this.studentComputersOnLoan = studentComputersOnLoan;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "StudentInformation{" +
+                "studentName='" + studentName + '\'' +
+                ", studentEmail='" + studentEmail + '\'' +
+                ", studentID='" + studentID + '\'' +
+                ", studentPhoneNumber='" + studentPhoneNumber + '\'' +
+                ", studentComputersOnLoan='" + studentComputersOnLoan + '\'' +
+                '}';
+    }
 }

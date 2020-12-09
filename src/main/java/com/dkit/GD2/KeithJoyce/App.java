@@ -163,6 +163,4 @@ public class App
         }
         System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system : ");
     }
-
-
 }
