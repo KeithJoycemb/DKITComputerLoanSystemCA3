@@ -76,7 +76,66 @@ public class App
 
     private void LoanSystemMenuLoop(LoanSystemDB loanSystemDB)
     {
+        LoanSystemMenu menuOption;
+        boolean loop = true;
+        int option;
+        while(loop)
+        {
+            printLoanSystemMenu();
+            try
+            {
+                option = keyboard.nextInt();
+                keyboard.nextLine();
+                menuOption = LoanSystemMenu.values()[option];
+                switch (menuOption)
+                {
+                    case QUIT_LOAN_SYSTEM_MENU:
+                        loop = false;
+                        break;
+                    case ADD_STUDENT:
+                        System.out.println("CODE NEEDED");
+                        break;
+                    case EDIT_STUDENT:
+                        System.out.println("CODE NEEDED");
+                        break;
+                    case REMOVE_STUDENT:
+                        System.out.println("CODE NEEDED");
+                        break;
+                    case PRINT_STUDENT_BOOKING:
+                        System.out.println("CODE NEEDED");
+                        break;
+                    case PRINT_ALL_CURRENT_BOOKINGS:
+                        break;
+                    case RETURN_BOOKING:
+                        System.out.println("CODE NEEDED");
+                        break;
+                    case PRINT_AVERAGE_LENGTH:
+                        System.out.println("CODE NEEDED");
+                        break;
+                    case PRINT_STATISTICS:
+                        System.out.println("CODE NEEDED");
+                        break;
+                }
+            } catch (InputMismatchException ime)
+            {
+                System.out.println(Colours.RED + "Please enter a valid option" + Colours.RESET);
+            }
+            catch(IllegalArgumentException iae)
+            {
+                System.out.println(Colours.RED + "Please enter a valid option" + Colours.RESET);
+            }
+        }
+        System.out.println(Colours.BLUE + "Thank you for using the DKIT Loan System" + Colours.RESET);
+    }
 
+    private void printLoanSystemMenu()
+    {
+        System.out.println("\n System Options:");
+        for(int i=0; i < LoanSystemMenu.values().length;i++)
+        {
+            System.out.println("\t" + Colours.BLUE + i + ". " + LoanSystemMenu.values()[i].toString()+Colours.RESET);
+        }
+        System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system :");
     }
 
     private void printMainMenu()
