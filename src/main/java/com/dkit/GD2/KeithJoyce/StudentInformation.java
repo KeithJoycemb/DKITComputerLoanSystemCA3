@@ -43,10 +43,6 @@ public class StudentInformation
         return studentComputersOnLoan;
     }
 
-    public void setStudentComputersOnLoan(String studentComputersOnLoan)
-    {
-        this.studentComputersOnLoan = studentComputersOnLoan;
-    }
 
     @Override
     public String toString()

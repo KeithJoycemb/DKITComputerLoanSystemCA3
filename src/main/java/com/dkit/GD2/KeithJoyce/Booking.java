@@ -10,7 +10,6 @@ public class Booking
     private String computerType;
     private String computerAssetTag;
     private String bookingStudentID;
-    private LocalDateTime atTime;
 
 
     public Booking(int bookingID, String bookingDateAndTime, String returnDateAndTime, String computerType, String computerAssetTag, String bookingStudentID)
