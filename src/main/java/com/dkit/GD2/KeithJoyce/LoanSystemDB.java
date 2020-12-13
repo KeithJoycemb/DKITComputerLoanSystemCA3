@@ -1,6 +1,4 @@
 package com.dkit.GD2.KeithJoyce;
-
-import java.awt.print.Book;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -191,7 +189,7 @@ public class LoanSystemDB
         this.bookingInfo.add(addBooking);
     }
 
-    private BookingInformation searchForBooking(int bookingToFind)
+    private BookingInformation searchForBooking(String bookingToFind)
     {
         for (BookingInformation booking : bookingInfo)
         {
@@ -205,8 +203,8 @@ public class LoanSystemDB
 
     public void printBooking()
     {
-        int bookingIDToPrint = Integer.parseInt(enterInformation("Booking to find"));
-        BookingInformation bookingToPrint = searchForBooking(bookingIDToPrint);
+        String studentIDToPrint = enterInformation("Booking to find");
+        BookingInformation bookingToPrint = searchForBooking(studentIDToPrint);
         if(bookingToPrint != null)
         {
             System.out.println(bookingToPrint);
@@ -221,7 +219,7 @@ public class LoanSystemDB
     {
         if(this.bookingInfo != null)
         {
-            int bookingToFind = Integer.parseInt(enterInformation("Booking to delete"));
+            String bookingToFind = enterInformation("Booking to delete");
             BookingInformation bookingToDelete = searchForBooking(bookingToFind);
             if(bookingToDelete != null)
             {

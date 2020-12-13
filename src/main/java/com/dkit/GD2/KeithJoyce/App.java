@@ -22,7 +22,7 @@ public class App
     {
         System.out.println(Colours.BLUE + "Hello and welcome to the DKIT computer loan system" + Colours.RESET);
         LoanSystemDB loanSystemDB = new LoanSystemDB();
-        loanSystemDB.loadStudentsInfoFromFile();
+        //loanSystemDB.loadStudentsInfoFromFile();
         mainMenuLoop(loanSystemDB);
         LoanSystemMenuLoop(loanSystemDB);
     }
@@ -131,8 +131,10 @@ public class App
 
                         //CASES TO DEAL WITH BOOKING INFORMATION
                     case ADD_BOOKING:
+                        loanSystemDB.addBooking();
                         break;
                     case PRINT_STUDENT_BOOKING:
+                        loanSystemDB.printBooking();
                         break;
                     case PRINT_ALL_CURRENT_BOOKINGS:
                         System.out.println("CODE NEEDED");
