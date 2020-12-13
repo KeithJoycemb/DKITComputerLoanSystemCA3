@@ -166,7 +166,7 @@ public class LoanSystemDB
                         studentToEdit.setStudentID(enterInformation("Edit Student ID"));
                         break;
                     case EDIT_STUDENT_PHONE_NUMBER:
-                        studentToEdit.setStudentPhoneNumber(enterInformation("Edit Phonenumber"));
+                        studentToEdit.setStudentPhoneNumber(enterInformation("Edit student phone number"));
                         break;
                     case EDIT_STUDENT_COMPUTER_ON_LOAN:
                         studentToEdit.setStudentComputersOnLoan(enterInformation("Edit Computer on loan"));

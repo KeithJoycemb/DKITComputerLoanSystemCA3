@@ -1,12 +1,8 @@
 package com.dkit.GD2.KeithJoyce;
 
-public enum LoanSystemMenu
+public enum BookingMenu
 {
-    QUIT_LOAN_SYSTEM_MENU,
-    ADD_STUDENT,
-    EDIT_STUDENT,
-    REMOVE_STUDENT,
-    PRINT_STUDENT,
+    QUIT_BOOKING_MENU,
     ADD_BOOKING,
     PRINT_STUDENT_BOOKING,
     PRINT_ALL_CURRENT_BOOKINGS,
@@ -14,5 +10,4 @@ public enum LoanSystemMenu
     RETURN_BOOKING,
     PRINT_AVERAGE_LENGTH,
     PRINT_STATISTICS;
-
 }

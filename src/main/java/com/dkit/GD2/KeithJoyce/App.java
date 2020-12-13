@@ -1,5 +1,4 @@
 package com.dkit.GD2.KeithJoyce;
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,7 +22,8 @@ public class App
         System.out.println(Colours.BLUE + "Hello and welcome to the DKIT computer loan system" + Colours.RESET);
         LoanSystemDB loanSystemDB = new LoanSystemDB();
         mainMenuLoop(loanSystemDB);
-        LoanSystemMenuLoop(loanSystemDB);
+        StudentInformationMenuLoop(loanSystemDB);
+        BookingMenuLoop(loanSystemDB);
     }
 
     private void mainMenuLoop(LoanSystemDB loanSystemDB)
@@ -53,16 +53,17 @@ public class App
                         throw new IllegalArgumentException();
                     }
                 }
-
-
                 menuOption = MainMenu.values()[option];
                 switch(menuOption)
                 {
                     case QUIT_APPLICATION:
                         loop = false;
                         break;
-                    case DISPLAY_LOAN_SYSTEM_MENU:
-                        LoanSystemMenuLoop(loanSystemDB);
+                    case DISPLAY_STUDENT_INFORMATION_MENU:
+                        StudentInformationMenuLoop(loanSystemDB);
+                        break;
+                    case DISPLAY_BOOKING_MENU:
+                        BookingMenuLoop(loanSystemDB);
                         break;
                 }
             }
@@ -80,14 +81,14 @@ public class App
         System.out.println(Colours.BLUE + "Thank you for using the DKIT Loan System" + Colours.RESET);
     }
 
-    private void LoanSystemMenuLoop(LoanSystemDB loanSystemDB)
+    private void StudentInformationMenuLoop(LoanSystemDB loanSystemDB)
     {
-        LoanSystemMenu menuOption;
+        StudentInformationMenu menuOption;
         boolean loop = true;
         int option;
         while(loop)
         {
-            printLoanSystemMenu();
+            printStudentInformationMenu();
             try
             {
                 String input = keyboard.nextLine();
@@ -99,16 +100,16 @@ public class App
                 else
                 {
                     option = Integer.parseInt(input);
-                    if(option < 0 || option >= LoanSystemMenu.values().length)
+                    if(option < 0 || option >= StudentInformationMenu.values().length)
                     {
                         throw new IllegalArgumentException();
                     }
                 }
 
-                menuOption = LoanSystemMenu.values()[option];
+                menuOption = StudentInformationMenu.values()[option];
                 switch (menuOption)
                 {
-                    case QUIT_LOAN_SYSTEM_MENU:
+                    case QUIT_STUDENT_INFORMATION_MENU:
                         loop = false;
                         break;
                         //CASES TO DEAL WITH STUDENT INFORMATION
@@ -124,7 +125,48 @@ public class App
                     case PRINT_STUDENT:
                         loanSystemDB.printStudent();
                         break;
-                        //CASES TO DEAL WITH BOOKING INFORMATION
+                }
+            }
+            catch (InputMismatchException ime)
+            {
+                System.out.println(Colours.RED + "You entered a non valid option, please enter a valid option" + Colours.RESET);
+            }
+            catch(IllegalArgumentException iae)
+            {
+                System.out.println(Colours.RED + "You entered a non valid option, please enter a valid option" + Colours.RESET);
+            }
+        }
+        loanSystemDB.saveStudentInformationToFile();
+        System.out.println(Colours.GREEN + "Saving student information to file" + Colours.RESET);
+        System.out.println(Colours.BLUE + "Exiting the student information menu" + Colours.RESET);
+    }
+
+    private void BookingMenuLoop(LoanSystemDB loanSystemDB)
+    {
+        BookingMenu menuOption;
+        boolean loop = true;
+        int option;
+        while (loop) {
+            printBookingMenu();
+            try
+            {
+                String input = keyboard.nextLine();
+                if (input.isEmpty() || input.length() > 1)
+                {
+                    throw new IllegalArgumentException();
+
+                } else {
+                    option = Integer.parseInt(input);
+                    if (option < 0 || option >= StudentInformationMenu.values().length) {
+                        throw new IllegalArgumentException();
+                    }
+                }
+                menuOption = BookingMenu.values()[option];
+                switch (menuOption)
+                {
+                    case QUIT_BOOKING_MENU:
+                        loop = false;
+                        break;
                     case ADD_BOOKING:
                         loanSystemDB.addBooking();
                         break;
@@ -132,7 +174,7 @@ public class App
                         loanSystemDB.printBooking();
                         break;
                     case PRINT_ALL_CURRENT_BOOKINGS:
-                        loanSystemDB.printAllBookings();
+                        System.out.println("CODE NEEDED");
                         break;
                     case DELETE_BOOKING:
                         loanSystemDB.deleteBooking();
@@ -159,11 +201,8 @@ public class App
         }
         loanSystemDB.saveBookingInformationToFile();
         System.out.println(Colours.GREEN + "Saving booking information to file" + Colours.RESET);
-        loanSystemDB.saveStudentInformationToFile();
-        System.out.println(Colours.GREEN + "Saving student information to file" + Colours.RESET);
-        System.out.println(Colours.BLUE + "Thank you for using the DKIT Loan System" + Colours.RESET);
+        System.out.println(Colours.BLUE + "Exiting the booking menu" + Colours.RESET);
     }
-
 
     private void printMainMenu()
     {
@@ -175,13 +214,25 @@ public class App
         System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system : ");
     }
 
-    private void printLoanSystemMenu()
+    private void printStudentInformationMenu()
     {
         System.out.println("\n System Options: ");
-        for(int i=0; i < LoanSystemMenu.values().length;i++)
+        for(int i = 0; i < StudentInformationMenu.values().length; i++)
         {
-            System.out.println("\t" + Colours.BLUE + i + ". " + LoanSystemMenu.values()[i].toString()+Colours.RESET);
+            System.out.println("\t" + Colours.BLUE + i + ". " + StudentInformationMenu.values()[i].toString()+Colours.RESET);
         }
         System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system :");
     }
+
+    private void printBookingMenu()
+    {
+        System.out.println("\n System Options: ");
+        for(int i = 0; i < BookingMenu.values().length; i++)
+        {
+            System.out.println("\t" + Colours.BLUE + i + ". " + BookingMenu.values()[i].toString()+Colours.RESET);
+        }
+        System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system :");
+    }
+
+
 }
