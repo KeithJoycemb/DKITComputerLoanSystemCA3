@@ -1,5 +1,7 @@
 package com.dkit.GD2.KeithJoyce;
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -154,14 +156,15 @@ public class LoanSystemDB
     {
         try(Scanner bookingInfoFile = new Scanner(new BufferedReader(new FileReader("booking.txt"))))
         {
+
             String input;
             while(bookingInfoFile.hasNextLine())
             {
                 input = bookingInfoFile.nextLine();
                 String[] data = input.split(",");
                 int bookingID =  Integer.parseInt(data[0]);
-                String bookingDateAndTime = data[1];
-                String returnDateAndTime = data[2];
+                LocalDateTime bookingDateAndTime = LocalDateTime.parse(data[1]);
+                LocalDateTime returnDateAndTime = LocalDateTime.parse(data[2]);
                 String computerType = data[3];
                 String computerAssetTag = data[4];
                 String bookingStudentID = data[5];
@@ -179,8 +182,11 @@ public class LoanSystemDB
     public void addBooking()
     {
         int bookingID = Integer.parseInt(enterInformation("Booking ID"));
-        String bookingDateAndTime = enterInformation("Date of Booking");
-        String returnDateAndTime = enterInformation("Date of return");
+
+
+        LocalDateTime bookingDateAndTime = LocalDateTime.now();
+        LocalDateTime returnDateAndTime =  LocalDateTime.now();
+
         String computerType = enterInformation("Type of computer");
         String computerAssetTag = enterInformation("Computer asset tag");
         String bookingStudentID = enterInformation(" Students ID");

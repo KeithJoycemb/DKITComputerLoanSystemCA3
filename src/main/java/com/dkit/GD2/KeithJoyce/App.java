@@ -23,6 +23,7 @@ public class App
         System.out.println(Colours.BLUE + "Hello and welcome to the DKIT computer loan system" + Colours.RESET);
         LoanSystemDB loanSystemDB = new LoanSystemDB();
         //loanSystemDB.loadStudentsInfoFromFile();
+        //loanSystemDB.loadBookingInfoFromFile();
         mainMenuLoop(loanSystemDB);
         LoanSystemMenuLoop(loanSystemDB);
     }
@@ -66,6 +67,9 @@ public class App
                         System.out.println(Colours.GREEN + "Saving Student information to file" + Colours.RESET);
                         loanSystemDB.saveStudentInformationToFile();
                         break;
+                    case SAVE_BOOKING_INFORMATION:
+                        System.out.println(Colours.GREEN + "Saving Booking information to file" + Colours.RESET);
+                        loanSystemDB.saveBookingInformationToFile();
                 }
             }
             catch(InputMismatchException ime)
