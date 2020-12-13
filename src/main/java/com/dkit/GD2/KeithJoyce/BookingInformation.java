@@ -2,7 +2,7 @@ package com.dkit.GD2.KeithJoyce;
 
 import java.time.LocalDateTime;
 
-public class Booking
+public class BookingInformation
 {
     private int bookingID;
     private String bookingDateAndTime;
@@ -12,7 +12,7 @@ public class Booking
     private String bookingStudentID;
 
 
-    public Booking(int bookingID, String bookingDateAndTime, String returnDateAndTime, String computerType, String computerAssetTag, String bookingStudentID)
+    public BookingInformation(int bookingID, String bookingDateAndTime, String returnDateAndTime, String computerType, String computerAssetTag, String bookingStudentID)
     {
         this.bookingID = bookingID;
         this.bookingDateAndTime = bookingDateAndTime;

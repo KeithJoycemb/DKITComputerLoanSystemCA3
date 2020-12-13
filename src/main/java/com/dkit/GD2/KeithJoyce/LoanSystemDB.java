@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class LoanSystemDB
 {
     private ArrayList<StudentInformation> studentsInfo;
-    private ArrayList<Booking> bookingInfo;
+    private ArrayList<BookingInformation> bookingInfo;
     private static Scanner keyboard = new Scanner(System.in);
 
     public LoanSystemDB()
@@ -135,22 +135,48 @@ public class LoanSystemDB
     {
         try(BufferedWriter bookingInfoFile = new BufferedWriter(new FileWriter("booking.txt")))
         {
-            for(StudentInformation student : studentsInfo)
+            for(BookingInformation booking : bookingInfo)
             {
-                bookingInfoFile.write(student.getStudentName() + "," + student.getStudentEmail() + "," + student.getStudentID() + "," +
-                        student.getStudentPhoneNumber() + "," + student.getStudentComputersOnLoan());
+                bookingInfoFile.write(booking.getBookingID() + "," + booking.getBookingDateAndTime() + "," + booking.getReturnDateAndTime() + "," + booking.getComputerType() +
+                        "," + booking.getComputerAssetTag() + "," + booking.getBookingStudentID());
 
                 bookingInfoFile.write("\n");
             }
         }
         catch(IOException ioe)
         {
-            System.out.println(Colours.RED + "Sorry could not save bookinhs to system" + Colours.RESET);
+            System.out.println(Colours.RED + "Sorry could not save booking to system" + Colours.RESET);
+        }
+    }
+
+    protected void loadBookingInfoFromFile()
+    {
+        try(Scanner bookingInfoFile = new Scanner(new BufferedReader(new FileReader("booking.txt"))))
+        {
+            String input;
+            while(bookingInfoFile.hasNextLine())
+            {
+                input = bookingInfoFile.nextLine();
+                String[] data = input.split(",");
+                int bookingID =  Integer.parseInt(data[0]);
+                String bookingDateAndTime = data[1];
+                String returnDateAndTime = data[2];
+                String computerType = data[3];
+                String computerAssetTag = data[4];
+                String bookingStudentID = data[5];
+
+                BookingInformation readInBooking = new BookingInformation(bookingID,bookingDateAndTime,returnDateAndTime,computerType,computerAssetTag,bookingStudentID);
+                this.bookingInfo.add( readInBooking);
+            }
+        }
+        catch(FileNotFoundException fne)
+        {
+            System.out.println(Colours.RED + "System could not load in student information" + Colours.RESET);
         }
     }
 
     public void addBooking()
     {
-        String bookingID
+        int bookingID;
     }
 }
