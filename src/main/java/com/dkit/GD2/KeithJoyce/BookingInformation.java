@@ -52,6 +52,26 @@ public class BookingInformation
         return bookingStudentID;
     }
 
+    public void setBookingID(int bookingID)
+    {
+        this.bookingID = bookingID;
+    }
+
+    public void setComputerType(String computerType)
+    {
+        this.computerType = computerType;
+    }
+
+    public void setComputerAssetTag(String computerAssetTag)
+    {
+        this.computerAssetTag = computerAssetTag;
+    }
+
+    public void setBookingStudentID(String bookingStudentID)
+    {
+        this.bookingStudentID = bookingStudentID;
+    }
+
     @Override
     public String toString()
     {

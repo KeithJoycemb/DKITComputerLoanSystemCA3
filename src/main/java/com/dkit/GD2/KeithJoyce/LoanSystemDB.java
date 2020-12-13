@@ -135,7 +135,7 @@ public class LoanSystemDB
         int option;
         while(loop)
         {
-            printStudentMenu();
+            printEditStudentMenu();
             try
             {
                 String input = keyboard.nextLine();
@@ -187,7 +187,7 @@ public class LoanSystemDB
         System.out.println(Colours.BLUE + "Student Information has been updated" + Colours.RESET);
     }
 
-    private void printStudentMenu()
+    private void printEditStudentMenu()
     {
         System.out.println("\n System Options: ");
         for(int i=0; i < EditStudentMenu.values().length;i++)
@@ -269,8 +269,8 @@ public class LoanSystemDB
 
     public void printBooking()
     {
-        String studentIDToPrint = enterInformation("Booking to find");
-        BookingInformation bookingToPrint = searchForBooking(studentIDToPrint);
+        String studentBookingIDToPrint = enterInformation("Booking to find");
+        BookingInformation bookingToPrint = searchForBooking(studentBookingIDToPrint);
         if(bookingToPrint != null)
         {
             System.out.println(bookingToPrint);
@@ -305,5 +305,66 @@ public class LoanSystemDB
         {
             System.out.println(allBookings);
         }
+    }
+
+    public void editBooking()
+    {
+        String bookingToFind = enterInformation("Booking to edit");
+        BookingInformation bookingToEdit = searchForBooking(bookingToFind);
+
+        boolean loop = true;
+        EditBookingMenu menuOption;
+        int option;
+        while(loop)
+        {
+            printEditBookingMenu();
+            try
+            {
+                String input = keyboard.nextLine();
+                if (input.isEmpty() || input.length() > 1)
+                {
+                    throw new IllegalArgumentException();
+                } else {
+                    option = Integer.parseInt(input);
+                    if (option < 0 || option >= EditBookingMenu.values().length)
+                    {
+                        throw new IllegalArgumentException();
+                    }
+                }
+                menuOption = EditBookingMenu.values()[option];
+                switch (menuOption)
+                {
+                    case QUIT_EDIT_BOOKING_MENU:
+                        loop = false;
+                        break;
+                    case EDIT_COMPUTER_TYPE:
+                        bookingToEdit.setComputerType(enterInformation("Computer type to edit"));
+                        break;
+                    case EDIT_BOOKING_STUDENT_ID:
+                        bookingToEdit.setBookingStudentID(enterInformation("Booking student ID to edit "));
+                }
+            }
+            catch(InputMismatchException ime)
+            {
+                System.out.println(Colours.RED + "You entered a non valid option, please enter a valid option" + Colours.RESET);
+                keyboard.nextLine();
+            }
+
+            catch(IllegalArgumentException iae)
+            {
+                System.out.println(Colours.RED + "You entered a non valid option, please enter a valid option" + Colours.RESET);
+            }
+        }
+        System.out.println(Colours.BLUE + "Booking Information has been updated" + Colours.RESET);
+    }
+
+    private void printEditBookingMenu()
+    {
+        System.out.println("\n System Options: ");
+        for(int i=0; i < EditBookingMenu.values().length;i++)
+        {
+            System.out.println("\t" + Colours.BLUE + i + ". " + EditBookingMenu.values()[i].toString()+Colours.RESET);
+        }
+        System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system :");
     }
 }

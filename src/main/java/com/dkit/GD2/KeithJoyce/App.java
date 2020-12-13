@@ -174,19 +174,22 @@ public class App
                         loanSystemDB.printBooking();
                         break;
                     case PRINT_ALL_CURRENT_BOOKINGS:
-                        System.out.println("CODE NEEDED");
+                        loanSystemDB.printAllBookings();
                         break;
                     case DELETE_BOOKING:
                         loanSystemDB.deleteBooking();
                         break;
                     case RETURN_BOOKING:
-                        System.out.println("CODE NEEDED");
+                        System.out.println("Not implemented");
+                        break;
+                    case EDIT_BOOKING:
+                        loanSystemDB.editBooking();
                         break;
                     case PRINT_AVERAGE_LENGTH:
-                        System.out.println("CODE NEEDED");
+                        System.out.println("Not implemented");
                         break;
                     case PRINT_STATISTICS:
-                        System.out.println("CODE NEEDED");
+                        System.out.println("Not implemented");
                         break;
                 }
             }
