@@ -43,6 +43,29 @@ public class StudentInformation
         return studentComputersOnLoan;
     }
 
+    public void setStudentName(String studentName)
+    {
+        this.studentName = studentName;
+    }
+
+    public void setStudentEmail(String studentEmail)
+    {
+        this.studentEmail = studentEmail;
+    }
+
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
+    }
+
+    public void setStudentPhoneNumber(String studentPhoneNumber)
+    {
+        this.studentPhoneNumber = studentPhoneNumber;
+    }
+
+    public void setStudentComputersOnLoan(String studentComputersOnLoan)
+    {
+        this.studentComputersOnLoan = studentComputersOnLoan;
+    }
 
     @Override
     public String toString()

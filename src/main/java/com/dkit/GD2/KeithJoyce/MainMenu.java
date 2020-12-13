@@ -3,7 +3,5 @@ package com.dkit.GD2.KeithJoyce;
 public enum MainMenu
 {
     QUIT_APPLICATION,
-    DISPLAY_LOAN_SYSTEM_MENU,
-    SAVE_STUDENT_INFORMATION,
-    SAVE_BOOKING_INFORMATION;
+    DISPLAY_LOAN_SYSTEM_MENU;
 }

@@ -3,6 +3,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LoanSystemDB
@@ -130,6 +131,68 @@ public class LoanSystemDB
         String studentToFind = enterInformation("Student to edit");
         StudentInformation studentToEdit = searchForStudent(studentToFind);
 
+        boolean loop = true;
+        EditStudentMenu menuOption;
+        int option;
+        while(loop)
+        {
+            printStudentMenu();
+            try
+            {
+                String input = keyboard.nextLine();
+                if (input.isEmpty() || input.length() > 1)
+                {
+                    throw new IllegalArgumentException();
+                } else {
+                    option = Integer.parseInt(input);
+                    if (option < 0 || option >= EditStudentMenu.values().length)
+                    {
+                        throw new IllegalArgumentException();
+                    }
+                }
+
+
+                menuOption = EditStudentMenu.values()[option];
+                switch (menuOption)
+                {
+                    case QUIT_STUDENT_EDIT_MENU:
+                        loop = false;
+                        break;
+                    case EDIT_STUDENT_NAME:
+                        studentToEdit.setStudentName(enterInformation("Edit Name"));
+                        break;
+                    case EDIT_STUDENT_EMAIL:
+                        break;
+                    case EDIT_STUDENT_ID:
+                        //break;
+                    case EDIT_STUDENT_PHONE_NUMBER:
+                        break;
+                    case EDIT_STUDENT_COMPUTER_ON_LOAN:
+                        break;
+                }
+            }
+            catch(InputMismatchException ime)
+            {
+                System.out.println(Colours.RED + "You entered a non valid option, please enter a valid option" + Colours.RESET);
+                keyboard.nextLine();
+            }
+
+            catch(IllegalArgumentException iae)
+            {
+                System.out.println(Colours.RED + "You entered a non valid option, please enter a valid option" + Colours.RESET);
+            }
+        }
+        System.out.println(Colours.BLUE + "Student Information has been updated" + Colours.RESET);
+    }
+
+    private void printStudentMenu()
+    {
+        System.out.println("\n System Options: ");
+        for(int i=0; i < EditStudentMenu.values().length;i++)
+        {
+            System.out.println("\t" + Colours.BLUE + i + ". " + EditStudentMenu.values()[i].toString()+Colours.RESET);
+        }
+        System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system :");
     }
 
     //*******************************************************************************BOOKING CODE***********************************************************************************************************************
@@ -182,11 +245,8 @@ public class LoanSystemDB
     public void addBooking()
     {
         int bookingID = Integer.parseInt(enterInformation("Booking ID"));
-
-
         LocalDateTime bookingDateAndTime = LocalDateTime.now();
         LocalDateTime returnDateAndTime =  LocalDateTime.now();
-
         String computerType = enterInformation("Type of computer");
         String computerAssetTag = enterInformation("Computer asset tag");
         String bookingStudentID = enterInformation(" Students ID");
