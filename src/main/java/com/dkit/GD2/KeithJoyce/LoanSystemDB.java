@@ -187,6 +187,35 @@ public class LoanSystemDB
 
         BookingInformation addBooking = new BookingInformation(bookingID, bookingDateAndTime, returnDateAndTime, computerType,computerAssetTag, bookingStudentID);
         this.bookingInfo.add(addBooking);
-
     }
+
+    private BookingInformation searchForBooking(int bookingToFind)
+    {
+        for (BookingInformation booking : bookingInfo)
+        {
+            if (booking.getBookingStudentID().equals(bookingToFind))
+            {
+                return booking;
+            }
+        }
+        return null;
+    }
+
+    public void printBooking()
+    {
+        int bookingIDToPrint = Integer.parseInt(enterInformation("Booking to find"));
+        BookingInformation bookingToPrint = searchForBooking(bookingIDToPrint);
+        if(bookingToPrint != null)
+        {
+            System.out.println(bookingToPrint);
+        }
+        else
+        {
+            System.out.println(Colours.RED + "This booking does not exist in the system" + Colours.RESET);
+        }
+    }
+
+
+
+
 }
