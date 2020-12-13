@@ -1,5 +1,6 @@
 package com.dkit.GD2.KeithJoyce;
 
+import java.awt.print.Book;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -114,6 +115,7 @@ public class LoanSystemDB
             if(studentToDelete != null)
             {
                 studentsInfo.remove(studentToDelete);
+                System.out.println(Colours.GREEN + "Removed student from system" + Colours.RESET);
             }
             else
             {
@@ -130,7 +132,7 @@ public class LoanSystemDB
 
     }
 
-    //***********************************************************************BOOKING CODE***********************************************************************************************************************
+    //*******************************************************************************BOOKING CODE***********************************************************************************************************************
 
     public void saveBookingInformationToFile()
     {
@@ -215,7 +217,21 @@ public class LoanSystemDB
         }
     }
 
-
-
-
+    public void deleteBooking()
+    {
+        if(this.bookingInfo != null)
+        {
+            int bookingToFind = Integer.parseInt(enterInformation("Booking to delete"));
+            BookingInformation bookingToDelete = searchForBooking(bookingToFind);
+            if(bookingToDelete != null)
+            {
+                bookingInfo.remove(bookingToDelete);
+                System.out.println(Colours.GREEN + "Removed booking from system" + Colours.RESET);
+            }
+            else
+            {
+                System.out.println(Colours.RED + "There is no booking matching that ID" + Colours.RESET);
+            }
+        }
+    }
 }
