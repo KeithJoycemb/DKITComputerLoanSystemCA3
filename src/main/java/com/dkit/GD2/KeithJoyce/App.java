@@ -132,7 +132,7 @@ public class App
                         loanSystemDB.printBooking();
                         break;
                     case PRINT_ALL_CURRENT_BOOKINGS:
-                        System.out.println("CODE NEEDED");
+                        loanSystemDB.printAllBookings();
                         break;
                     case DELETE_BOOKING:
                         loanSystemDB.deleteBooking();

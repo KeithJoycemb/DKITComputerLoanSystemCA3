@@ -226,8 +226,8 @@ public class LoanSystemDB
                 input = bookingInfoFile.nextLine();
                 String[] data = input.split(",");
                 int bookingID =  Integer.parseInt(data[0]);
-                LocalDateTime bookingDateAndTime = LocalDateTime.parse(data[2],DateTimeFormatter.ofPattern("dd-MM-yyyy Time HH:mm"));
-                LocalDateTime returnDateAndTime = LocalDateTime.parse(data[1], DateTimeFormatter.ofPattern("dd-MM-yyyy Time HH:mm"));
+                LocalDateTime bookingDateAndTime = LocalDateTime.parse(data[2]);
+                LocalDateTime returnDateAndTime = LocalDateTime.parse(data[1]);
                 String computerType = data[3];
                 String computerAssetTag = data[4];
                 String bookingStudentID = data[5];
@@ -296,6 +296,14 @@ public class LoanSystemDB
             {
                 System.out.println(Colours.RED + "There is no booking matching that ID" + Colours.RESET);
             }
+        }
+    }
+
+    public void printAllBookings()
+    {
+        for(BookingInformation allBookings : bookingInfo)
+        {
+            System.out.println(allBookings);
         }
     }
 }
