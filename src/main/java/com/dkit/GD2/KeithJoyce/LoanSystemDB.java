@@ -15,6 +15,7 @@ public class LoanSystemDB
         this.studentsInfo = new ArrayList<>();
         this.bookingInfo = new ArrayList<>();
     }
+
     protected void loadStudentsInfoFromFile()
     {
         try(Scanner studentsInfoFile = new Scanner(new BufferedReader(new FileReader("students.txt"))))
@@ -61,18 +62,18 @@ public class LoanSystemDB
     private static String enterInformation(String Information)
     {
         String input;
-        System.out.print("Please enter the students " + Information + " : ");
+        System.out.print("Please enter the " + Information + " : ");
         input = keyboard.nextLine();
         return input;
     }
 
     public void addStudent()
     {
-        String studentName = enterInformation("Name");
-        String studentEmail = enterInformation("Email");
-        String studentID = enterInformation("ID");
-        String studentPhoneNumber = enterInformation("Phone Number");
-        String studentComputersOnLoan = enterInformation("Computer On Loan");
+        String studentName = enterInformation("Name of student");
+        String studentEmail = enterInformation("Email of student");
+        String studentID = enterInformation("Student ID");
+        String studentPhoneNumber = enterInformation("Students Phone Number");
+        String studentComputersOnLoan = enterInformation("Computer Student has on loan");
 
         StudentInformation addStudent = new StudentInformation(studentName, studentEmail, studentID, studentPhoneNumber, studentComputersOnLoan);
         this.studentsInfo.add(addStudent);
@@ -171,12 +172,21 @@ public class LoanSystemDB
         }
         catch(FileNotFoundException fne)
         {
-            System.out.println(Colours.RED + "System could not load in student information" + Colours.RESET);
+            System.out.println(Colours.RED + "System could not load in booking information" + Colours.RESET);
         }
     }
 
     public void addBooking()
     {
-        int bookingID;
+        int bookingID = Integer.parseInt(enterInformation("Booking ID"));
+        String bookingDateAndTime = enterInformation("Date of Booking");
+        String returnDateAndTime = enterInformation("Date of return");
+        String computerType = enterInformation("Type of computer");
+        String computerAssetTag = enterInformation("Computer asset tag");
+        String bookingStudentID = enterInformation(" Students ID");
+
+        BookingInformation addBooking = new BookingInformation(bookingID, bookingDateAndTime, returnDateAndTime, computerType,computerAssetTag, bookingStudentID);
+        this.bookingInfo.add(addBooking);
+
     }
 }
