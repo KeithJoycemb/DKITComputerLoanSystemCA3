@@ -122,7 +122,6 @@ public class LoanSystemDB
             {
                 System.out.println(Colours.RED + "This student does not exist in the system" + Colours.RESET);
             }
-
         }
     }
 
@@ -151,7 +150,6 @@ public class LoanSystemDB
                     }
                 }
 
-
                 menuOption = EditStudentMenu.values()[option];
                 switch (menuOption)
                 {
@@ -162,12 +160,16 @@ public class LoanSystemDB
                         studentToEdit.setStudentName(enterInformation("Edit Name"));
                         break;
                     case EDIT_STUDENT_EMAIL:
+                        studentToEdit.setStudentEmail(enterInformation("Edit Email"));
                         break;
                     case EDIT_STUDENT_ID:
-                        //break;
+                        studentToEdit.setStudentID(enterInformation("Edit Student ID"));
+                        break;
                     case EDIT_STUDENT_PHONE_NUMBER:
+                        studentToEdit.setStudentPhoneNumber(enterInformation("Edit Phonenumber"));
                         break;
                     case EDIT_STUDENT_COMPUTER_ON_LOAN:
+                        studentToEdit.setStudentComputersOnLoan(enterInformation("Edit Computer on loan"));
                         break;
                 }
             }
@@ -205,7 +207,6 @@ public class LoanSystemDB
             {
                 bookingInfoFile.write(booking.getBookingID() + "," + booking.getBookingDateAndTime() + "," + booking.getReturnDateAndTime() + "," + booking.getComputerType() +
                         "," + booking.getComputerAssetTag() + "," + booking.getBookingStudentID());
-
                 bookingInfoFile.write("\n");
             }
         }
@@ -219,15 +220,14 @@ public class LoanSystemDB
     {
         try(Scanner bookingInfoFile = new Scanner(new BufferedReader(new FileReader("booking.txt"))))
         {
-
             String input;
             while(bookingInfoFile.hasNextLine())
             {
                 input = bookingInfoFile.nextLine();
                 String[] data = input.split(",");
                 int bookingID =  Integer.parseInt(data[0]);
-                LocalDateTime bookingDateAndTime = LocalDateTime.parse(data[1]);
-                LocalDateTime returnDateAndTime = LocalDateTime.parse(data[2]);
+                LocalDateTime bookingDateAndTime = LocalDateTime.parse(data[2],DateTimeFormatter.ofPattern("dd-MM-yyyy Time HH:mm"));
+                LocalDateTime returnDateAndTime = LocalDateTime.parse(data[1], DateTimeFormatter.ofPattern("dd-MM-yyyy Time HH:mm"));
                 String computerType = data[3];
                 String computerAssetTag = data[4];
                 String bookingStudentID = data[5];

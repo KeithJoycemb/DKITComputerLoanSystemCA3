@@ -29,7 +29,7 @@ public class App
     private void mainMenuLoop(LoanSystemDB loanSystemDB)
     {
         loanSystemDB.loadStudentsInfoFromFile();
-        //loanSystemDB.loadBookingInfoFromFile();
+        loanSystemDB.loadBookingInfoFromFile();
         boolean loop = true;
         MainMenu menuOption;
         int option;
@@ -48,11 +48,12 @@ public class App
                 else
                 {
                     option = Integer.parseInt(input);
+                    if(option < 0 || option >= MainMenu.values().length)
+                    {
+                        throw new IllegalArgumentException();
+                    }
                 }
-                if(option < 0 || option >= MainMenu.values().length)
-                {
-                    throw new IllegalArgumentException();
-                }
+
 
                 menuOption = MainMenu.values()[option];
                 switch(menuOption)
@@ -132,6 +133,9 @@ public class App
                         break;
                     case PRINT_ALL_CURRENT_BOOKINGS:
                         System.out.println("CODE NEEDED");
+                        break;
+                    case DELETE_BOOKING:
+                        loanSystemDB.deleteBooking();
                         break;
                     case RETURN_BOOKING:
                         System.out.println("CODE NEEDED");
