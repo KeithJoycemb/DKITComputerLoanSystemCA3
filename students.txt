@@ -1,3 +1,5 @@
-keith,sad,asd,asd,asd
-barry,sdaf,asdfas,df,sadf
-adam,sadf,sadf,sadf,asdf
+keith,Email@email.com,D00220759,0838881122,none
+joe,Email@email.com,D00770231,0873421122,none
+adam,Email@email.com,D00330123,0838234324,DKIT-10217
+bob,Email@email.com,D00220235,0872131233,DKIT-10218
+dylan,Email@email.com,D00220213,0893123213,DKIT-10219
