@@ -3,7 +3,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
+ *Keith Joyce
+ *D00220759
+ *https://github.com/KeithJoycemb/DKITComputerLoanSystemCA3
  *
  */
 public class App 
