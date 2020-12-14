@@ -1,6 +1,6 @@
 package com.dkit.GD2.KeithJoyce;
 
-public class Computer
+public class ComputerInformation
 {
     private String manufacturer;
     private String processor;
@@ -10,7 +10,7 @@ public class Computer
     private String assetTag;
     private String purchaseDate;
 
-    public Computer(String manufacturer, String processor, String ramSize, String diskSize, String weight, String assetTag, String purchaseDate)
+    public ComputerInformation(String manufacturer, String processor, String ramSize, String diskSize, String weight, String assetTag, String purchaseDate)
     {
         this.manufacturer = manufacturer;
         this.processor = processor;

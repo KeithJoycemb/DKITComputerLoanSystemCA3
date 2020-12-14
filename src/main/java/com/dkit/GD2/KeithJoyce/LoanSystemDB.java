@@ -3,6 +3,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,12 +11,19 @@ public class LoanSystemDB
 {
     private ArrayList<StudentInformation> studentsInfo;
     private ArrayList<BookingInformation> bookingInfo;
+    private ArrayList<Desktop> desktopInfo;
+    private ArrayList<Laptop> laptopInfo;
+    private ArrayList<RaspberryPi> raspberryPiInfo;
+
     private static Scanner keyboard = new Scanner(System.in);
 
     public LoanSystemDB()
     {
         this.studentsInfo = new ArrayList<>();
         this.bookingInfo = new ArrayList<>();
+        this.desktopInfo = new ArrayList<>();
+        this.laptopInfo = new ArrayList<>();
+        this.raspberryPiInfo = new ArrayList<>();
     }
 
     protected void loadStudentsInfoFromFile()
@@ -331,6 +339,7 @@ public class LoanSystemDB
                         throw new IllegalArgumentException();
                     }
                 }
+
                 menuOption = EditBookingMenu.values()[option];
                 switch (menuOption)
                 {
@@ -367,4 +376,114 @@ public class LoanSystemDB
         }
         System.out.print("Please enter the number for the option you would like to use, press 0 to quit the system :");
     }
+
+    //*******************************************************************************COMPUTERS CODE***********************************************************************************************************************
+
+    protected void loadDesktopFromFile()
+    {
+        try(Scanner desktopInfoFile = new Scanner(new BufferedReader(new FileReader("Desktop.txt"))))
+        {
+            String input;
+            while(desktopInfoFile.hasNextLine())
+            {
+                input = desktopInfoFile.nextLine();
+                String[] data = input.split(",");
+                String manufacturer = data[0];
+                String processor = data[1];
+                String ramSize = data[2];
+                String diskSize = data[3];
+                String weight = data[4];
+                String assetTag = data[5];
+                String purchaseDate = data[6];
+                int monitor = Integer.parseInt(data[7]);
+
+                Desktop readInDesktop = new Desktop(manufacturer,processor,ramSize,diskSize,weight,assetTag,purchaseDate,monitor);
+                this.desktopInfo.add(readInDesktop);
+            }
+        }
+        catch(FileNotFoundException fne)
+        {
+            System.out.println(Colours.RED + "System could not load in desktop information" + Colours.RESET);
+        }
+    }
+
+    protected void loadLaptopFromFile()
+    {
+        try (Scanner laptopInfoFile = new Scanner(new BufferedReader(new FileReader("Laptop.txt"))))
+        {
+            String input;
+            while (laptopInfoFile.hasNextLine())
+            {
+                input = laptopInfoFile.nextLine();
+                String[] data = input.split(",");
+                String manufacturer = data[0];
+                String processor = data[1];
+                String ramSize = data[2];
+                String diskSize = data[3];
+                String weight = data[4];
+                String assetTag = data[5];
+                String purchaseDate = data[6];
+                String laptopScreenSize = data[7];
+                String laptopBatteryLife = data[8];
+
+                Laptop readInLaptop = new Laptop(manufacturer, processor, ramSize, diskSize, weight, assetTag, purchaseDate, laptopScreenSize, laptopBatteryLife);
+                this.laptopInfo.add(readInLaptop);
+            }
+        } catch (FileNotFoundException fne)
+        {
+            System.out.println(Colours.RED + "System could not load in laptop information" + Colours.RESET);
+        }
+    }
+
+    protected void loadRaspberryPiFile()
+    {
+        try (Scanner raspberryPiInfoFile = new Scanner(new BufferedReader(new FileReader("Laptop.txt"))))
+        {
+            String input;
+            while (raspberryPiInfoFile.hasNextLine())
+            {
+                input = raspberryPiInfoFile.nextLine();
+                String[] data = input.split(",");
+                String manufacturer = data[0];
+                String processor = data[1];
+                String ramSize = data[2];
+                String diskSize = data[3];
+                String weight = data[4];
+                String assetTag = data[5];
+                String purchaseDate = data[6];
+                String raspBerryPiSDCard = data[7];
+                int raspBerryPiGPIOPins = Integer.parseInt(data[8]);
+
+                RaspberryPi readInRaspberyyPi = new RaspberryPi(manufacturer, processor, ramSize,weight, assetTag, purchaseDate, raspBerryPiSDCard, raspBerryPiGPIOPins);
+                this.raspberryPiInfo.add(readInRaspberyyPi);
+            }
+        } catch (FileNotFoundException fne)
+        {
+            System.out.println(Colours.RED + "System could not load in raspberry pi information" + Colours.RESET);
+        }
+    }
+    public void printAllDesktops()
+    {
+        for(Desktop allDesktops : desktopInfo)
+        {
+            System.out.println(allDesktops);
+        }
+    }
+
+    public void printAllLaptops()
+    {
+        for(Laptop allLaptops : laptopInfo)
+        {
+            System.out.println(allLaptops);
+        }
+    }
+    public void printAllRaspberryPi()
+    {
+        for(RaspberryPi allRaspberryPi : raspberryPiInfo)
+        {
+            System.out.println(allRaspberryPi);
+        }
+    }
+
+
 }

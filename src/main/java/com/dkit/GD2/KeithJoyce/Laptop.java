@@ -1,6 +1,6 @@
 package com.dkit.GD2.KeithJoyce;
 
-public class Laptop extends Computer
+public class Laptop extends ComputerInformation
 {
     private String laptopScreenSize;
     private String laptopBatteryLife;

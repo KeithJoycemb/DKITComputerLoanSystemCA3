@@ -1,6 +1,6 @@
 package com.dkit.GD2.KeithJoyce;
 
-public class Desktop extends Computer
+public class Desktop extends ComputerInformation
 {
     private int monitor;
 

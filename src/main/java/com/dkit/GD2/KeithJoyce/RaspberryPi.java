@@ -1,6 +1,6 @@
 package com.dkit.GD2.KeithJoyce;
 
-public class RaspberryPi extends Computer
+public class RaspberryPi extends ComputerInformation
 {
     private String raspBerryPiSDCard;
     private int raspBerryPiGPIOPins;
